@@ -4,7 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/xx"
-    android:background="#ffc0bfbf">
+    android:background="#ffc0bfbf"
+    android:gravity="top">
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -69,17 +70,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:src="@mipmap/logo_depocode"
-        android:layout_alignStart="@+id/space"
-        android:layout_above="@+id/morseButton" />
+        android:layout_above="@+id/morseButton"
+        android:layout_toEndOf="@+id/repeatToggleButton" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/space"
-        android:layout_centerHorizontal="true"
         android:id="@+id/linearLayout2"
-        android:layout_marginTop="10dp">
+        android:layout_above="@+id/morseButton"
+        android:layout_alignStart="@+id/space">
 
         <ToggleButton
             android:layout_width="wrap_content"
@@ -125,36 +125,10 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentEnd="true">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/playButton"
-            android:src="@mipmap/grayplay64"
-            android:padding="20dp" />
-
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="repeat check"
-            android:textOff=""
-            android:textOn=""
-            android:drawableTop="@mipmap/grayrepeat50"
-            android:id="@+id/repeatToggleButton"
-            android:layout_gravity="bottom"
-            android:paddingTop="5dp"
-            android:checked="false"
-            android:paddingBottom="8dp" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/stopButton"
-            android:src="@mipmap/graystop64"
-            android:padding="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -173,18 +147,49 @@
             android:layout_below="@+id/linearLayout2"
             android:layout_marginTop="20dp"
             android:paddingTop="0dp"
-            android:paddingBottom="0dp"
-            android:visibility="gone" />
+            android:paddingBottom="0dp" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/layout2"
             android:src="@android:drawable/ic_menu_add"
-            android:layout_marginTop="25dp"
-            android:visibility="gone" />
+            android:layout_marginTop="25dp" />
 
     </LinearLayout>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="repeat check"
+        android:textOff=""
+        android:textOn=""
+        android:drawableTop="@mipmap/grayrepeat50"
+        android:id="@+id/repeatToggleButton"
+        android:paddingTop="12dp"
+        android:checked="false"
+        android:paddingBottom="8dp"
+        android:gravity="top"
+        android:layout_above="@+id/morseButton"
+        android:layout_toEndOf="@+id/linearLayout2" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stopButton"
+        android:src="@mipmap/graystop64"
+        android:padding="20dp"
+        android:layout_above="@+id/morseButton"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playButton"
+        android:src="@mipmap/grayplay64"
+        android:padding="20dp"
+        android:layout_alignTop="@+id/stopButton"
+        android:layout_toStartOf="@+id/stopButton" />
 
 </RelativeLayout>
 

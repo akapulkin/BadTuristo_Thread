@@ -7,9 +7,9 @@ import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
+//import android.view.Gravity;
+//import android.view.Menu;
+//import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import java.util.HashMap;
@@ -25,15 +25,16 @@ public class MainActivity extends Activity {
     private Boolean soundCheck = false;
     private Boolean displayCheck = false;
     private static Boolean repeatCheck = false;
-    MediaPlayer mediaPlayer ;
+    MediaPlayer mediaPlayer;
+    SoundPlaying soundPlayer;
+    FlashLightning flafLight;
     private String outputDirty;
     final static int DOT = 200;
     final static int DASH = 600;
     final static int SPACE = 1400;
     final static int BETWEEN_LATER = 600;
     final static int BETWEEN_SIGN = 200;
-    SoundPlaying soundPlayer = new SoundPlaying();
-    FlashLightning flafLight = new FlashLightning();
+
     public static TextView getOutputMorze() {
         return outputMorze;
     }
@@ -101,9 +102,19 @@ public class MainActivity extends Activity {
         releaseMP();
         //camera.release();
     }
-
-
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("outputDirty", outputDirty);
+        Log.d(LOG_TAG, "onSaveInstanceState");
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        outputDirty = savedInstanceState.getString("outputDirty");
+        Log.d(LOG_TAG, "onRestoreInstanceState");
+    }
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -123,11 +134,14 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     View.OnClickListener onClickPlayListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mIsInterupt = false;
+            soundPlayer = new SoundPlaying();
+            flafLight = new FlashLightning();
             if(soundPlayer.isAlive()|flafLight.isAlive()){
                 mIsInterupt=true;
             }
@@ -169,7 +183,6 @@ public class MainActivity extends Activity {
     };*/
 
     class SoundPlaying extends Thread{
-
         public void sound() {
             if (outputDirty != null) {
                 for (int i = 0; i < outputDirty.length(); i++) {
@@ -220,7 +233,7 @@ public class MainActivity extends Activity {
         public void run() {
                 if (repeatCheck == true) {
                     for (; ; ) {
-                        if (!SoundPlaying.interrupted()) {
+                        if (!mIsInterupt) {
                             sound();
                         }else {
                             return;
@@ -299,7 +312,6 @@ public class MainActivity extends Activity {
                     }
                     if (!mIsInterupt) {
                         if (equal.equals("/")) {
-
                             try {
                                 TimeUnit.MILLISECONDS.sleep(SPACE);
                             } catch (InterruptedException e) {
@@ -312,7 +324,6 @@ public class MainActivity extends Activity {
                     }
                     if (!mIsInterupt) {
                         if (equal.equals("|")) {
-
                             try {
                                 TimeUnit.MILLISECONDS.sleep(BETWEEN_LATER);
                             } catch (InterruptedException e) {
@@ -386,7 +397,7 @@ public class MainActivity extends Activity {
             mediaPlayer.stop();
         }
         releaseMP();*/
-        if(!soundPlayer.isInterrupted()) {
+        if(!mIsInterupt) {
             Log.d(LOG_TAG, "start Raw");
             if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.censorbeep);
