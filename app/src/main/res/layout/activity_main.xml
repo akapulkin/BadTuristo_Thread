@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/xx"
+    android:background="#ffc0bfbf">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:id="@+id/uperText"
+        android:layout_below="@+id/editText" android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/editText" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:maxLines="3" android:minLines="3"
+        android:linksClickable="false"
+        android:padding="5dp"
+        android:paddingBottom="10dp" android:hint="Введите текст" android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" android:layout_toStartOf="@+id/textView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#ff787878"
+        android:layout_alignEnd="@+id/morseButton"
+        android:textColor="#ff101010"
+        android:textIsSelectable="false"
+        android:textColorHint="#ff101010" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView"
+        android:maxLines="3" android:minLines="3"
+        android:background="#ff787878" android:padding="5dp" android:paddingTop="10dp" android:textSize="25dp"
+        android:textStyle="bold" android:layout_below="@+id/uperText"
+        android:layout_alignParentStart="true" android:textIsSelectable="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignEnd="@+id/morseButton"
+        android:textColor="#ff101010"
+        android:singleLine="false"
+        android:phoneNumber="false" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/morseButton"
+        android:src="@mipmap/morse_button"
+        android:adjustViewBounds="true"
+        android:baseline="@android:dimen/app_icon_size"
+        android:layout_alignParentBottom="true" android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:maxHeight="40dp" />
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/textView" android:layout_alignStart="@+id/textView"
+        android:layout_alignEnd="@+id/textView" android:id="@+id/space"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@mipmap/logo"
+        android:layout_alignStart="@+id/space"
+        android:layout_above="@+id/morseButton" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/space"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout2"
+        android:layout_marginTop="10dp">
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/grayvolumeup64"
+            android:textOff=""
+            android:textOn=""
+
+            android:text="sound check"
+            android:id="@+id/soundToggleButton"
+            android:checked="false"
+            android:paddingBottom="8dp" />
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flash check"
+            android:textOff=""
+            android:textOn=""
+            android:drawableTop="@mipmap/graybulb64"
+            android:id="@+id/flashToggleButton"
+            android:checked="false"
+            style="@android:style/Widget.Button.Toggle"
+            android:paddingBottom="8dp" />
+
+        <ToggleButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Display Light check"
+            android:textOff=""
+            android:textOn=""
+            android:drawableTop="@mipmap/graytouchscreensmartphone64"
+            android:id="@+id/displayToggleButton"
+            android:paddingTop="5dp"
+            android:checked="false"
+            android:paddingBottom="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playButton"
+            android:src="@mipmap/grayplay64"
+            android:padding="20dp" />
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="repeat check"
+            android:textOff=""
+            android:textOn=""
+            android:drawableTop="@mipmap/grayrepeat50"
+            android:id="@+id/repeatToggleButton"
+            android:layout_gravity="bottom"
+            android:paddingTop="5dp"
+            android:checked="false"
+            android:paddingBottom="8dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/stopButton"
+            android:src="@mipmap/graystop64"
+            android:padding="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linearLayout2"
+        android:weightSum="1">
+
+        <Spinner
+            android:layout_width="266dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginTop="20dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout2"
+            android:src="@android:drawable/ic_menu_add"
+            android:layout_marginTop="25dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
